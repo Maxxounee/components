@@ -1,6 +1,8 @@
 <template>
 	<div class="FormWrapper">
 		<slot></slot>
+		<div v-html="agreeActive"></div>
+		<div v-html="formValue"></div>
 	</div>
 </template>
 
@@ -37,14 +39,35 @@ export default {
 	data() {
 		return {
 			formValue: {},
+			agreeActive: true,
+			regExp: {
+				phoneReplace: /^(\+)|\D/g,
+			},
 		};
 	},
 	computed: {},
 	mounted() {
 	},
 	methods: {
-		setFormValue(name, data) {
-			this.formValue[name] = data;
+		send() {
+			this.$elog('send');
+		},
+		setNewField(name, required = false) {
+			this.$set(this.formValue, name, {
+				value: '',
+				required,
+			});
+		},
+		setAgreeState(boolean) {
+			this.agreeActive = boolean;
+			this.$elog('Дороуууу');
+		},
+		setFormValue({ name, value, completelyFilled }) {
+			this.$set(this.formValue, name, {
+				...this.formValue[name],
+				value,
+				completelyFilled,
+			});
 			console.log(this.formValue);
 		},
 		parent() {

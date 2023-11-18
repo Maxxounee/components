@@ -3,34 +3,30 @@
 		<FormWrapper>
 			<FormInput
 				name="tel"
-				type="input"
 				input-type="tel"
 				mask="phone"
 				placeholder="Телефон"
 				initial-value="+7 ("
 			/>
 			<FormInput
-				name="tel"
+				name="email"
 				type="input"
-				input-type="tel"
-				mask="phone"
-				placeholder="Телефон"
-				initial-value="+7 ("
+				input-type="email"
+				required
+				placeholder="Email"
 			/>
-			<div class="test">
-				<div class="test">
-					<div class="test">
-						<FormInput
-							name="email"
-							type="input"
-							input-type="tel"
-							mask="phone"
-							placeholder="Телефон"
-							initial-value="+7 ("
-						/>
-					</div>
-				</div>
-			</div>
+			<FormInput
+				name="text"
+				input-type="text"
+				required
+				placeholder="Введите текст..."
+			/>
+			<FormInput element-type="agree">
+				Отправляя форму блабла
+			</FormInput>
+			<FormInput element-type="send">
+				<StandardButton />
+			</FormInput>
 		</FormWrapper>
 	</div>
 </template>

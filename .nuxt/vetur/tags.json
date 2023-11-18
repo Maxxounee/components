@@ -1,4 +1,7 @@
 {
+  "StandardButton": {
+    "description": "Auto imported from components/StandardButton.vue"
+  },
   "FormInput": {
     "description": "Auto imported from components/form/FormInput.vue"
   },
