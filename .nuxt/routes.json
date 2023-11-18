@@ -2,8 +2,8 @@
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/macbook/Documents/GitHub/components/nuxt/pages/index.vue",
+    "component": "/Users/macbook/Documents/GitHub/components/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_5632fd4e"
+    "_name": "_ece8baf8"
   }
 ]

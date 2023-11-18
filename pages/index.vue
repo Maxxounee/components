@@ -1,15 +1,53 @@
 <template>
-	<!--<Tutorial />-->
-	<div>
-		"stylelint-config-standard-scss": "^11.1.0",
-		"sass": "^1.49.9",
-		"sass-loader": "^10.2.1"
+	<div class="index">
+		<FormWrapper>
+			<FormInput
+				name="tel"
+				type="input"
+				input-type="tel"
+				mask="phone"
+				placeholder="Телефон"
+				initial-value="+7 ("
+			/>
+			<FormInput
+				name="tel"
+				type="input"
+				input-type="tel"
+				mask="phone"
+				placeholder="Телефон"
+				initial-value="+7 ("
+			/>
+			<div class="test">
+				<div class="test">
+					<div class="test">
+						<FormInput
+							name="email"
+							type="input"
+							input-type="tel"
+							mask="phone"
+							placeholder="Телефон"
+							initial-value="+7 ("
+						/>
+					</div>
+				</div>
+			</div>
+		</FormWrapper>
 	</div>
 </template>
 
 <script>
+import initialMixins from '@/mixins/initialMixins';
+
 export default {
-	name: 'IndexPage',
-	layout: 'default',
+	mixins: [initialMixins({ layout: 'default2' })],
+	data() {
+		return {
+			fields: [
+				{
+					type: 'input',
+				},
+			],
+		};
+	},
 };
 </script>

@@ -1,8 +1,11 @@
 {
-  "NuxtLogo": {
-    "description": "Auto imported from components/NuxtLogo.vue"
+  "FormInput": {
+    "description": "Auto imported from components/form/FormInput.vue"
   },
-  "Tutorial": {
-    "description": "Auto imported from components/Tutorial.vue"
+  "FormWrapper": {
+    "description": "Auto imported from components/form/FormWrapper.vue"
+  },
+  "FormBackup": {
+    "description": "Auto imported from components/form/backup.vue"
   }
 }
