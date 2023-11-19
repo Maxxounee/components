@@ -35,7 +35,7 @@
 import initialMixins from '@/mixins/initialMixins';
 
 export default {
-	mixins: [initialMixins({ layout: 'default2' })],
+	mixins: [initialMixins({ layout: 'default' })],
 	data() {
 		return {
 			fields: [

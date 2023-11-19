@@ -1,69 +1,87 @@
-# components
+# FormInput
 
-## Build Setup
+Компонент выступает в роли дочернего для
+компонента [FormWrapper]((https://gitlab.art3d.ru/test-dev/npm-modules/-/tree/main/FormWrapper))
+и работает
+только в связке с ним.
 
-```bash
-# install dependencies
-$ npm install
+Позволяет декларативно описывать большие формы с любым дизайном, без
+необходимости
+лезть в код компонента. Содержит в себе только обнуляющие стили. Мимикрирует под
+любые необходимые поля:
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+* input,
+* textarea,
+* кнопка отправки,
+* согласие на обработку персональных данных.
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+## Props
 
-# generate static project
-$ npm run generate
-```
+___
+`name` `type: String, default: ''`
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+Имя поля при отправке данных через /api/feedback. Должно
+быть уникальным для каждого поля. Бесполезно при **elementType = send/agree**.
+___
+`elementType` `type: String, default: 'input'`
 
-## Special Directories
+Тип элемента:
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+* `input` `type`- классический input для номера телефона, почты и тп.
 
-### `assets`
+* `textarea` - textarea для сообщений
+* `agree` - поле согласия с обработкой персональных данных. Такой тип
+  FromInput'а имеет
+  в себе **\<slot>** для текста и **\<slot name="before">** для чекбокса.
+* `send` - поле для кнопки. Такой тип FormInput'а имеет в себе **\<slot>** для
+  кнопки. Стилизовать
+  активное и неактивное состояния, можно ссылаясь на класс **.active**
+  родительского
+  компонента [FormWrapper]((https://gitlab.art3d.ru/test-dev/npm-modules/-/tree/main/FormWrapper))
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+___
+`inputType` `type: String, default: 'text'`  
+Стандартный для html тип поля type="...". Бесполезно при **elementType =
+send/agree**.
+___
+`line` `type: Boolean, default: false`  
+Нижний бордер для полей input
+___
+`activateAgree` `type: Boolean, default: false`  
+Значение поля agree при инициализации. Работает только с **elementType = agree
+**.
+___
+`mask` `type: String, default: ''`  
+Маска для input'а. Принимает значения вида +7 (###) ###-##-##.
+Можно использовать разные токены:
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+* #: /\d/
+* X: /[0-9a-zA-Z]/
+* S: /[a-zA-Z]/
+* A: /[a-zA-Z]/
+* a: /[a-zA-Z]/
 
-### `components`
+Так же в **mask** можно передать строковые значения, которые соответствуют
+готовым шаблонам:
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+* phone: +7 (###) ###-##-##
+* phone8: 8 (###) ###-##-##
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+___
+`placeholder` `type: String, default: ''`  
+Placeholder для input'а. Бесполезно при **elementType = send/agree**.
+___
+`initialValue` `type: String, default: ''`  
+Значение, которое автоматически подставляется в input при фокусе. Бесполезно при
+**elementType = send/agree**.
+___
+`required` `type: Boolean, default: false`
+Атрибут required. Запрещает отправку форму, если FormInput не заполнен.
+Бесполезно при **elementType = send/agree**.
+___
+`debounce` `type: [String, Number], default: 300`  
+Значение задержки debounce функции в миллисекундах. Позволяет не вызывать
+внутренние методы раньше, чем через *300мс* после окончания ввода.
+Существует
+только для оптимизации.
 
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
