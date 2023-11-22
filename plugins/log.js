@@ -1,4 +1,5 @@
 import Vue from 'vue';
+// import Spline from 'vue-spline';
 /* eslint-disable */
 const CHARS = [
 	[0x1f600, 0x1f64f],
@@ -20,5 +21,5 @@ const randomEmojiLog = {
 		};
 	},
 };
-
+// Vue.component(Spline);
 Vue.use(randomEmojiLog);

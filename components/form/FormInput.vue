@@ -28,6 +28,7 @@
 				<slot></slot>
 			</div>
 		</div>
+		<!-- TODO: передать active через scoped slot -->
 		<div
 			v-else-if="elementType === 'send'"
 			class="FormInput__send"

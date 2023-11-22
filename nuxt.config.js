@@ -1,3 +1,5 @@
+import webpack from 'webpack';
+
 export default {
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
@@ -23,6 +25,8 @@ export default {
 	plugins: [
 		'@/plugins/directives',
 		'@/plugins/log',
+		{ src: '@/plugins/pixi', ssr: false },
+		{ src: '@/plugins/distort', ssr: false },
 	],
 
 	// Auto import components: https://go.nuxtjs.dev/config-components
@@ -58,5 +62,19 @@ export default {
 	},
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
-	build: {},
+	build: {
+		// plugins: [
+		// 	new webpack.ProvidePlugin({
+		// 		// P: 'PIXI',
+		// 	}),
+		// ],
+		// extend(config) {
+		// 	config.module.rules.push({
+		// 		test: /\.cjs$/,
+		// 		include: /node_modules/,
+		// 		type: 'javascript/auto',
+		// 	});
+		// },
+		// ignore: ['node_modules', 'src/spline.runtime.min.js'],
+	},
 };
