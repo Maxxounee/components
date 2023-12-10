@@ -26,6 +26,7 @@ export default {
 		'@/plugins/directives',
 		'@/plugins/log',
 		{ src: '@/plugins/pixi', ssr: false },
+		{ src: '@/plugins/three', ssr: false },
 		{ src: '@/plugins/distort', ssr: false },
 	],
 

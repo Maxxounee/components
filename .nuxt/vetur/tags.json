@@ -1,4 +1,7 @@
 {
+  "SoftSticky": {
+    "description": "Auto imported from components/SoftSticky.vue"
+  },
   "StandardButton": {
     "description": "Auto imported from components/StandardButton.vue"
   },

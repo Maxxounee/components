@@ -1,7 +1,6 @@
 <template>
 	<div class="layout">
 		<Nuxt />
-		21331312312132
 	</div>
 </template>
 
@@ -10,6 +9,12 @@ export default {};
 </script>
 
 <style lang="scss">
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
 .dev {
 }
 </style>
