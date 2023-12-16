@@ -56,6 +56,15 @@ export default {
 				{
 					component: 'FormInput',
 					binds: {
+						fake: true,
+						name: 'name',
+						inputType: 'text',
+						placeholder: ' ',
+					},
+				},
+				{
+					component: 'FormInput',
+					binds: {
 						name: 'phone',
 						inputType: 'tel',
 						mask: 'phone',

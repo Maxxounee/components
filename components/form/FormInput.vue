@@ -3,6 +3,7 @@
 		v-model="value"
 		v-mask="maskDict[mask]"
 		class="FormInput"
+		:class="{ fake }"
 		:placeholder="placeholder"
 		:type="inputType"
 		@input="(event) => {
@@ -42,6 +43,11 @@ export default {
 			},
 			required: true,
 			default: 'tel',
+		},
+		/* TODO: допилить фейк поле */
+		fake: {
+			type: Boolean,
+			default: false,
 		},
 		mask: {
 			type: String,
@@ -163,6 +169,13 @@ export default {
 
 	&:focus::placeholder {
 		color: transparent;
+	}
+
+	&.fake {
+		pointer-events: none;
+		position: absolute;
+		height: 1px;
+		opacity: 0;
 	}
 }
 </style>

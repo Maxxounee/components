@@ -12,6 +12,7 @@
 
 <script>
 export default {
+	/* TODO: не забыть про возможность работы со счетчиками */
 	props: {
 		type: {
 			type: String,
@@ -64,6 +65,7 @@ export default {
 		setNewField(name, required = false) {
 			this.$set(this.formValue, name, {
 				value: '',
+				completelyFilled: false,
 				required,
 			});
 		},
