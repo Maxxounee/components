@@ -1,6 +1,10 @@
 <template>
-	<div class="FormWrapper">
+	<div
+		class="FormWrapper"
+		:class="{ active }"
+	>
 		<slot></slot>
+		<!-- test -->
 		<div v-html="agreeActive"></div>
 		<div v-html="formValue"></div>
 	</div>
@@ -8,49 +12,49 @@
 
 <script>
 /* eslint-disable */
-import { TheMask } from 'vue-the-mask';
-
 export default {
-	components: {
-		TheMask,
-	},
 	props: {
-		fields: {
-			type: Array,
-			default: () => ([]),
-		},
 		type: {
 			type: String,
 			default: 'callback',
-		},
-		agree: {
-			type: String,
-			default: null,
 		},
 		additional: {
 			type: Object,
 			default: () => ({}),
 		},
-		sendDisabled: {
-			type: Boolean,
-			default: false,
-		},
 	},
 	data() {
 		return {
+			active: false,
 			formValue: {},
 			agreeActive: true,
-			regExp: {
-				phoneReplace: /^(\+)|\D/g,
-			},
 		};
 	},
 	computed: {},
+	watch: {
+		formValue: {
+			handler(data) {
+				this.formValueHandler(data);
+			},
+			deep: true,
+		},
+		agreeActive() {
+			this.formValueHandler(this.formValue);
+		},
+	},
 	mounted() {
 	},
 	methods: {
 		send() {
 			this.$elog('send');
+		},
+		formValueHandler(data) {
+			let available = this.agreeActive;
+			for (const key in data) {
+				if (!available) break;
+				available = !data[key].required || (data[key].required && (data[key].completelyFilled ?? false));
+			}
+			this.active = available;
 		},
 		setNewField(name, required = false) {
 			this.$set(this.formValue, name, {
@@ -60,7 +64,6 @@ export default {
 		},
 		setAgreeState(boolean) {
 			this.agreeActive = boolean;
-			this.$elog('Дороуууу');
 		},
 		setFormValue({ name, value, completelyFilled }) {
 			this.$set(this.formValue, name, {
@@ -68,10 +71,6 @@ export default {
 				value,
 				completelyFilled,
 			});
-			console.log(this.formValue);
-		},
-		parent() {
-			this.$elog('parent');
 		},
 	},
 };
@@ -80,5 +79,8 @@ export default {
 <style lang="scss">
 /* stylelint-disable */
 .FormWrapper {
+	&.active {
+		background-color: #ffeb3b;
+	}
 }
 </style>

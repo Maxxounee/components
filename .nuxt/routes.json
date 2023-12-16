@@ -7,11 +7,11 @@
     "_name": "_558f81d4"
   },
   {
-    "name": "filters",
-    "path": "/filters",
-    "component": "/Users/macbook/Documents/GitHub/components/pages/filters.vue",
-    "chunkName": "pages/filters",
-    "_name": "_100dc2ad"
+    "name": "cursor",
+    "path": "/cursor",
+    "component": "/Users/macbook/Documents/GitHub/components/pages/cursor.vue",
+    "chunkName": "pages/cursor",
+    "_name": "_f98ea3d8"
   },
   {
     "name": "gooey",
@@ -21,39 +21,11 @@
     "_name": "_0ed694ad"
   },
   {
-    "name": "spline",
-    "path": "/spline",
-    "component": "/Users/macbook/Documents/GitHub/components/pages/spline.vue",
-    "chunkName": "pages/spline",
-    "_name": "_5fc82d0f"
-  },
-  {
-    "name": "svg",
-    "path": "/svg",
-    "component": "/Users/macbook/Documents/GitHub/components/pages/svg.vue",
-    "chunkName": "pages/svg",
-    "_name": "_6a3e5d96"
-  },
-  {
-    "name": "svgfiltertest",
-    "path": "/svgfiltertest",
-    "component": "/Users/macbook/Documents/GitHub/components/pages/svgfiltertest.vue",
-    "chunkName": "pages/svgfiltertest",
-    "_name": "_6abab720"
-  },
-  {
-    "name": "test",
-    "path": "/test",
-    "component": "/Users/macbook/Documents/GitHub/components/pages/test.vue",
-    "chunkName": "pages/test",
-    "_name": "_4b4f1a60"
-  },
-  {
-    "name": "three",
-    "path": "/three",
-    "component": "/Users/macbook/Documents/GitHub/components/pages/three.vue",
-    "chunkName": "pages/three",
-    "_name": "_5cc0d950"
+    "name": "svg-filter-gallery",
+    "path": "/svg-filter-gallery",
+    "component": "/Users/macbook/Documents/GitHub/components/pages/svg-filter-gallery.vue",
+    "chunkName": "pages/svg-filter-gallery",
+    "_name": "_6ba50244"
   },
   {
     "name": "index",
