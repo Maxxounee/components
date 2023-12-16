@@ -277,13 +277,16 @@
 								result="composite1"
 							/>
 						</filter>
-
-						<circle
-							cx="15%"
-							cy="15%"
-							r="25%"
-							filter="url(#filter--sun)"
+						<image
+							src="/assets/images/00.jpeg"
+							alt=""
 						/>
+						<!--<circle-->
+						<!--	cx="15%"-->
+						<!--	cy="15%"-->
+						<!--	r="25%"-->
+						<!--	filter="url(#filter&#45;&#45;sun)"-->
+						<!--/>-->
 					</g>
 
 					<!-- Фиолетовый справа внизу -->

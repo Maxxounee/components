@@ -35,6 +35,13 @@
     "_name": "_6a3e5d96"
   },
   {
+    "name": "svgfiltertest",
+    "path": "/svgfiltertest",
+    "component": "/Users/macbook/Documents/GitHub/components/pages/svgfiltertest.vue",
+    "chunkName": "pages/svgfiltertest",
+    "_name": "_6abab720"
+  },
+  {
     "name": "test",
     "path": "/test",
     "component": "/Users/macbook/Documents/GitHub/components/pages/test.vue",
