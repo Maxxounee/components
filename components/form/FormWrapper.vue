@@ -11,7 +11,6 @@
 </template>
 
 <script>
-/* eslint-disable */
 export default {
 	props: {
 		type: {
@@ -23,6 +22,7 @@ export default {
 			default: () => ({}),
 		},
 	},
+	emits: ['active'],
 	data() {
 		return {
 			active: false,
@@ -41,6 +41,9 @@ export default {
 		agreeActive() {
 			this.formValueHandler(this.formValue);
 		},
+		active(value) {
+			this.$emit('active', value);
+		},
 	},
 	mounted() {
 	},
@@ -51,8 +54,10 @@ export default {
 		formValueHandler(data) {
 			let available = this.agreeActive;
 			for (const key in data) {
-				if (!available) break;
-				available = !data[key].required || (data[key].required && (data[key].completelyFilled ?? false));
+				if (!available) {
+					break;
+				}
+				available = !data[key].required || (data[key].required && (data[key].completelyFilled));
 			}
 			this.active = available;
 		},
@@ -65,7 +70,7 @@ export default {
 		setAgreeState(boolean) {
 			this.agreeActive = boolean;
 		},
-		setFormValue({ name, value, completelyFilled }) {
+		setFormValue({ name, value, completelyFilled = false }) {
 			this.$set(this.formValue, name, {
 				...this.formValue[name],
 				value,
@@ -77,7 +82,6 @@ export default {
 </script>
 
 <style lang="scss">
-/* stylelint-disable */
 .FormWrapper {
 	&.active {
 		background-color: #ffeb3b;

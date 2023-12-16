@@ -2,6 +2,7 @@
 	<div class="index">
 		{{ value }}
 		<FormWrapper>
+			<!-- Вариант формы через компоненты -->
 			<FormInput
 				name="phone"
 				input-type="tel"
@@ -26,6 +27,14 @@
 				placeholder="Your text"
 				minimal-length-required="10"
 			/>
+			<!-- Вариант формы через объект в data() -->
+			<Component
+				:is="field.component"
+				v-for="(field, index) in fields"
+				:key="index"
+				v-bind="field.binds"
+				v-on="field.handlers"
+			/>
 			<FormAgree />
 			<FormSend>
 				<StandardButton value="отправить" />
@@ -42,12 +51,54 @@ export default {
 	data() {
 		return {
 			value: 0,
+			/* старая школа */
 			fields: [
 				{
-					type: 'input',
+					component: 'FormInput',
+					binds: {
+						name: 'phone',
+						inputType: 'tel',
+						mask: 'phone',
+						placeholder: 'Телефон',
+						initialValue: '+7 (',
+						required: true,
+					},
+					handlers: {
+						update: this.update,
+					},
+				},
+				{
+					component: 'FormInput',
+					binds: {
+						name: 'password',
+						inputType: 'password',
+						placeholder: 'Пароль',
+					},
+				},
+				{
+					component: 'FormInput',
+					binds: {
+						name: 'email',
+						inputType: 'email',
+						placeholder: 'Почта',
+					},
+				},
+				{
+					component: 'FormText',
+					binds: {
+						name: 'message',
+						minimalLengthRequired: 10,
+						placeholder: 'Ваш текст',
+					},
 				},
 			],
 		};
+	},
+	methods: {
+		update(value) {
+			this.value = value;
+			this.$elog('update', value);
+		},
 	},
 };
 </script>
