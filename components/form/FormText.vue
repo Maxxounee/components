@@ -66,6 +66,9 @@ export default {
 			}
 			return available;
 		},
+		clearValue() {
+			this.value = '';
+		},
 		trimSpaces({ target }) {
 			this.value = target.value.replace(/\s+/g, ' ').trimStart();
 		},

@@ -154,52 +154,6 @@ export default {
 		this.placeholders = this.startPlaceholders;
 	},
 	methods: {
-		send() {
-			if (this.available) {
-				const form = new FormData();
-				form.append('type', this.type);
-				Object.keys(this.values).forEach((key) => {
-					form.append(key, this.values[key]);
-				});
-				Object.keys(this.additional).forEach((key) => {
-					form.append(key, this.additional[key]);
-				});
-				const json = Object.fromEntries(form.entries());
-				this.$emit('formBeforeSend', json);
-				this.$nuxt.$emit('formBeforeSend', json);
-				this.$axios({
-					method: 'post',
-					url: '/api/feedback',
-					data: form,
-					headers: { 'Content-Type': 'multipart/form-data' },
-				})
-					.then((response) => {
-						this.result = response.data.status;
-						if (response.data.status === 'success') {
-							this.$emit('formSendSuccess', json);
-							this.$nuxt.$emit('formSendSuccess', json);
-						} else {
-							this.$emit('formSendError', json, response);
-							this.$nuxt.$emit('formSendError', json, response);
-						}
-
-						setTimeout(() => {
-							this.values = {};
-							this.result = null;
-						}, 3000);
-					})
-					.catch((response) => {
-						this.result = 'error';
-						this.$log(response);
-						this.$emit('formSendError', json, response);
-						this.$nuxt.$emit('formSendError', json, response);
-
-						setTimeout(() => {
-							this.result = null;
-						}, 3000);
-					});
-			}
-		},
 		agreeToggle() {
 			this.agreeActive = !this.agreeActive;
 		},

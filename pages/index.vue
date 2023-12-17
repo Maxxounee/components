@@ -1,32 +1,31 @@
 <template>
 	<div class="index">
-		{{ value }}
 		<FormWrapper>
 			<!-- Вариант формы через компоненты -->
-			<FormInput
-				name="phone"
-				input-type="tel"
-				mask="phone"
-				placeholder="Телефон"
-				initial-value="+7 ("
-				required
-				@update="(newValue) => value = newValue"
-			/>
-			<FormInput
-				name="password"
-				input-type="password"
-				placeholder="password"
-			/>
-			<FormInput
-				name="email"
-				input-type="email"
-				placeholder="email"
-			/>
-			<FormText
-				name="message"
-				placeholder="Your text"
-				minimal-length-required="10"
-			/>
+			<!--<FormInput-->
+			<!--	name="phone"-->
+			<!--	input-type="tel"-->
+			<!--	mask="phone"-->
+			<!--	placeholder="Телефон"-->
+			<!--	initial-value="+7 ("-->
+			<!--	required-->
+			<!--	@update="(newValue) => value = newValue"-->
+			<!--/>-->
+			<!--<FormInput-->
+			<!--	name="password"-->
+			<!--	input-type="password"-->
+			<!--	placeholder="password"-->
+			<!--/>-->
+			<!--<FormInput-->
+			<!--	name="email"-->
+			<!--	input-type="email"-->
+			<!--	placeholder="email"-->
+			<!--/>-->
+			<!--<FormText-->
+			<!--	name="message"-->
+			<!--	placeholder="Your text"-->
+			<!--	minimal-length-required="10"-->
+			<!--/>-->
 			<!-- Вариант формы через объект в data() -->
 			<Component
 				:is="field.component"
@@ -39,6 +38,7 @@
 			<FormSend>
 				<StandardButton value="отправить" />
 			</FormSend>
+			<template #preloader><img src="/assets/preloader.svg" /></template>
 		</FormWrapper>
 	</div>
 </template>
@@ -96,7 +96,7 @@ export default {
 					component: 'FormText',
 					binds: {
 						name: 'message',
-						minimalLengthRequired: 10,
+						minimalLengthRequired: 0,
 						placeholder: 'Ваш текст',
 					},
 				},
@@ -106,8 +106,51 @@ export default {
 	methods: {
 		update(value) {
 			this.value = value;
-			this.$elog('update', value);
 		},
 	},
 };
 </script>
+<style lang="scss">
+.index {
+	.FormWrapper {
+		&__form {
+			display: flex;
+			flex-direction: column;
+			row-gap: 20px;
+			align-items: center;
+
+			padding: 20px 100px;
+		}
+
+		.FormSend {
+			pointer-events: none;
+			opacity: 0.4;
+		}
+
+		&.available {
+			.FormSend {
+				pointer-events: auto;
+				opacity: 1;
+			}
+		}
+	}
+
+	.FormInput {
+		padding-bottom: 10px;
+		border-bottom: 1px solid #2d001e;
+	}
+
+	.FormText {
+		padding: 10px 4px;
+		border: 1px solid #2d001e;
+		border-radius: 4px;
+	}
+
+	.FormAgree {
+		display: flex;
+		column-gap: 4px;
+		align-items: center;
+		white-space: nowrap;
+	}
+}
+</style>

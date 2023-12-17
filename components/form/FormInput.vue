@@ -136,6 +136,9 @@ export default {
 				target.value = '';
 			}
 		},
+		clearValue() {
+			this.value = '';
+		},
 		trimSpaces({ target }) {
 			if (this.inputType !== 'tel') {
 				this.value = target.value.replace(/\s/g, '');
