@@ -3,49 +3,48 @@
     "name": "canvas",
     "path": "/canvas",
     "component": "/Users/macbook/Documents/GitHub/components/pages/canvas.vue",
-    "chunkName": "pages/canvas",
-    "_name": "_558f81d4"
+    "chunkName": "pages/canvas"
   },
   {
     "name": "cursor",
     "path": "/cursor",
     "component": "/Users/macbook/Documents/GitHub/components/pages/cursor.vue",
-    "chunkName": "pages/cursor",
-    "_name": "_f98ea3d8"
+    "chunkName": "pages/cursor"
   },
   {
     "name": "gooey",
     "path": "/gooey",
     "component": "/Users/macbook/Documents/GitHub/components/pages/gooey.vue",
-    "chunkName": "pages/gooey",
-    "_name": "_0ed694ad"
+    "chunkName": "pages/gooey"
   },
   {
     "name": "kftest",
     "path": "/kftest",
     "component": "/Users/macbook/Documents/GitHub/components/pages/kftest.vue",
-    "chunkName": "pages/kftest",
-    "_name": "_679c63ab"
+    "chunkName": "pages/kftest"
   },
   {
     "name": "npm-test",
     "path": "/npm-test",
     "component": "/Users/macbook/Documents/GitHub/components/pages/npm-test.vue",
-    "chunkName": "pages/npm-test",
-    "_name": "_fdfcbf1c"
+    "chunkName": "pages/npm-test"
+  },
+  {
+    "name": "paint",
+    "path": "/paint",
+    "component": "/Users/macbook/Documents/GitHub/components/pages/paint.vue",
+    "chunkName": "pages/paint"
   },
   {
     "name": "svg-filter-gallery",
     "path": "/svg-filter-gallery",
     "component": "/Users/macbook/Documents/GitHub/components/pages/svg-filter-gallery.vue",
-    "chunkName": "pages/svg-filter-gallery",
-    "_name": "_6ba50244"
+    "chunkName": "pages/svg-filter-gallery"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/macbook/Documents/GitHub/components/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_ece8baf8"
+    "chunkName": "pages/index"
   }
 ]
