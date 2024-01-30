@@ -7,26 +7,5 @@
   },
   "SvgFilterGalery": {
     "description": "Auto imported from components/SvgFilterGalery.vue"
-  },
-  "FormAgree": {
-    "description": "Auto imported from components/form/FormAgree.vue"
-  },
-  "FormInput": {
-    "description": "Auto imported from components/form/FormInput.vue"
-  },
-  "FormInputBackup": {
-    "description": "Auto imported from components/form/FormInputBackup.vue"
-  },
-  "FormSend": {
-    "description": "Auto imported from components/form/FormSend.vue"
-  },
-  "FormText": {
-    "description": "Auto imported from components/form/FormText.vue"
-  },
-  "FormWrapper": {
-    "description": "Auto imported from components/form/FormWrapper.vue"
-  },
-  "FormBackup": {
-    "description": "Auto imported from components/form/backup.vue"
   }
 }

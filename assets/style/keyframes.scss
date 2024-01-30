@@ -1,0 +1,24 @@
+/* stylelint-disable */
+
+@mixin kf($from: (x y), $to: (x y)) {
+	$id: unique-id();
+	$name: unquote("keyframesAnimation#{$id}");
+	animation-name: $name;
+
+	@keyframes #{$name} {
+		0% {
+			translate: nth($from, 1) nth($from, 2);
+		}
+		100% {
+			translate: nth($to, 1) nth($to, 2);
+		}
+		@content;
+	}
+}
+
+@mixin scrollDriven($timeline: view(), $easing: linear, $range: cover 0% cover 100%) {
+	animation-timeline: $timeline;
+	animation-timing-function: $easing;
+	animation-range: $range;
+	animation-fill-mode: both;
+}

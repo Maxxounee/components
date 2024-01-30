@@ -21,6 +21,20 @@
     "_name": "_0ed694ad"
   },
   {
+    "name": "kftest",
+    "path": "/kftest",
+    "component": "/Users/macbook/Documents/GitHub/components/pages/kftest.vue",
+    "chunkName": "pages/kftest",
+    "_name": "_679c63ab"
+  },
+  {
+    "name": "npm-test",
+    "path": "/npm-test",
+    "component": "/Users/macbook/Documents/GitHub/components/pages/npm-test.vue",
+    "chunkName": "pages/npm-test",
+    "_name": "_fdfcbf1c"
+  },
+  {
     "name": "svg-filter-gallery",
     "path": "/svg-filter-gallery",
     "component": "/Users/macbook/Documents/GitHub/components/pages/svg-filter-gallery.vue",

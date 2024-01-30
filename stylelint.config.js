@@ -5,6 +5,7 @@ module.exports = {
 		'scss/dollar-variable-pattern': null,
 		'block-no-empty': null,
 		'no-descending-specificity': null,
+		'scss/no-global-function-names': null,
 		'selector-class-pattern': ['^[a-zA-Z]([-]?[a-zA-Z0-9]+)*(__[a-zA-Z0-9]([-]?[a-zA-Z0-9]+)*)?(_[a-zA-Z0-9]([-]?[a-zA-Z0-9]+)*)?$', {
 			resolveNestedSelectors: true,
 			message: function expected(selectorValue) {
