@@ -1,4 +1,7 @@
 {
+  "HoverTextEffect": {
+    "description": "Auto imported from components/HoverTextEffect.vue"
+  },
   "StandardButton": {
     "description": "Auto imported from components/StandardButton.vue"
   },
