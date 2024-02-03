@@ -33,7 +33,8 @@
 									</span>
 
 									<h1 class="u-a6">
-										3D images bring scenes to life with depth and movement
+										3D images bring scenes to life with
+										depth and movement
 									</h1>
 								</div>
 							</div>
@@ -49,7 +50,7 @@
 
 <script>
 /* eslint-disable */
-import SlideGallery from '~/components/tools/SlideGallery.vue';
+// import SlideGallery from '~/components/tools/SlideGallery.vue';
 
 /*https://bornfight.github.io/pixi.js-playground/faux-3d.html*/
 class ThreeDImagesController {
@@ -75,7 +76,7 @@ class ThreeDImagesController {
 }
 
 export default {
-	components: { SlideGallery },
+	// components: { SlideGallery },
 	props: {},
 	data() {
 		return {
@@ -209,11 +210,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/style/import";
-
 .SectionGallery {
-	@include div100d(relative);
-
 	position: relative;
 
 	.hidden {

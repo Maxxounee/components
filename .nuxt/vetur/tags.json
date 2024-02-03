@@ -2,6 +2,18 @@
   "HoverTextEffect": {
     "description": "Auto imported from components/HoverTextEffect.vue"
   },
+  "ImageDisplacement": {
+    "description": "Auto imported from components/ImageDisplacement.vue"
+  },
+  "MagneticElementV1": {
+    "description": "Auto imported from components/MagneticElement-v1.vue"
+  },
+  "MagneticElement": {
+    "description": "Auto imported from components/MagneticElement.vue"
+  },
+  "MouseTrail": {
+    "description": "Auto imported from components/MouseTrail.vue"
+  },
   "StandardButton": {
     "description": "Auto imported from components/StandardButton.vue"
   },

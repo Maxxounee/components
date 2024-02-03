@@ -42,11 +42,25 @@
     "_name": "_679c63ab"
   },
   {
+    "name": "magnetic-dom",
+    "path": "/magnetic-dom",
+    "component": "/Users/macbook/Documents/GitHub/components/pages/magnetic-dom.vue",
+    "chunkName": "pages/magnetic-dom",
+    "_name": "_762c2292"
+  },
+  {
     "name": "npm-test",
     "path": "/npm-test",
     "component": "/Users/macbook/Documents/GitHub/components/pages/npm-test.vue",
     "chunkName": "pages/npm-test",
     "_name": "_fdfcbf1c"
+  },
+  {
+    "name": "pixi-gallery",
+    "path": "/pixi-gallery",
+    "component": "/Users/macbook/Documents/GitHub/components/pages/pixi-gallery.vue",
+    "chunkName": "pages/pixi-gallery",
+    "_name": "_9f3db626"
   },
   {
     "name": "ripplecirclesclick",

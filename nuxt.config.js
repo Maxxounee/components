@@ -17,11 +17,7 @@ export default {
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 		],
 	},
-
-	// Global CSS: https://go.nuxtjs.dev/config-css
 	css: [],
-
-	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 	plugins: [
 		'@/plugins/directives',
 		'@/plugins/log',
@@ -40,42 +36,29 @@ export default {
 		// https://go.nuxtjs.dev/stylelint
 		'@nuxtjs/stylelint-module',
 	],
-
 	// Modules: https://go.nuxtjs.dev/config-modules
 	modules: [
-		// https://go.nuxtjs.dev/axios
-		// '@nuxtjs/axios',
-		// '@nuxtjs/stylelint-module',
-	],
-	// stylelint: {
-	// 	files: [
-	// 		'assets/**/*.{s?(a|c)ss}',
-	// 		'm/assets/**/*.{s?(a|c)ss}',
-	// 		'{assets, components, layouts, m, mixins, pages}/**/*.vue',
-	// 	],
-	// },
-
-	// Axios module configuration: https://go.nuxtjs.dev/config-axios
-	axios: {
-		// Workaround to avoid enforcing hard-coded localhost:3000:
-		// https://github.com/nuxt-community/axios-module/issues/308
-		baseURL: '/',
-	},
-
-	// Build Configuration: https://go.nuxtjs.dev/config-build
-	build: {
-		// plugins: [
-		// 	new webpack.ProvidePlugin({
-		// 		// P: 'PIXI',
-		// 	}),
-		// ],
-		// extend(config) {
-		// 	config.module.rules.push({
-		// 		test: /\.cjs$/,
-		// 		include: /node_modules/,
-		// 		type: 'javascript/auto',
-		// 	});
+		// 'webpack-glsl-loader',
+		// {
+		// 	test: /\.(glsl|vs|fs|vert|frag)$/,
+		// 	use: ['raw-loader', 'glslify-loader'],
 		// },
-		// ignore: ['node_modules', 'src/spline.runtime.min.js'],
+		// 'webpack-glsl-loader',
+	],
+	build: {
+		extend(config) {
+			config.module.rules.push({
+				test: /\.(glsl|vs|fs|vert|frag)$/,
+				loader: 'webpack-glsl-loader',
+			});
+		},
+	},
+	module: {
+		// rules: [
+		// 	{
+		// 		test: /\.(glsl|vs|fs|vert|frag)$/,
+		// 		loader: 'webpack-glsl-loader',
+		// 	},
+		// ],
 	},
 };
