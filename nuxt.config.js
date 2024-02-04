@@ -1,7 +1,4 @@
-import webpack from 'webpack';
-
 export default {
-	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
 		title: 'components',
 		htmlAttrs: {
@@ -25,25 +22,12 @@ export default {
 		{ src: '@/plugins/three', ssr: false },
 		{ src: '@/plugins/distort', ssr: false },
 	],
-
-	// Auto import components: https://go.nuxtjs.dev/config-components
 	components: true,
-
-	// Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
 	buildModules: [
 		// https://go.nuxtjs.dev/eslint
-		'@nuxtjs/eslint-module',
+		// '@nuxtjs/eslint-module',
 		// https://go.nuxtjs.dev/stylelint
-		'@nuxtjs/stylelint-module',
-	],
-	// Modules: https://go.nuxtjs.dev/config-modules
-	modules: [
-		// 'webpack-glsl-loader',
-		// {
-		// 	test: /\.(glsl|vs|fs|vert|frag)$/,
-		// 	use: ['raw-loader', 'glslify-loader'],
-		// },
-		// 'webpack-glsl-loader',
+		// '@nuxtjs/stylelint-module',
 	],
 	build: {
 		extend(config) {

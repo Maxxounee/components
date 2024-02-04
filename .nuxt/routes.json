@@ -3,84 +3,78 @@
     "name": "canvas",
     "path": "/canvas",
     "component": "/Users/macbook/Documents/GitHub/components/pages/canvas.vue",
-    "chunkName": "pages/canvas",
-    "_name": "_558f81d4"
+    "chunkName": "pages/canvas"
   },
   {
     "name": "canvas-text",
     "path": "/canvas-text",
     "component": "/Users/macbook/Documents/GitHub/components/pages/canvas-text.vue",
-    "chunkName": "pages/canvas-text",
-    "_name": "_6dc6a298"
+    "chunkName": "pages/canvas-text"
   },
   {
     "name": "clip-text",
     "path": "/clip-text",
     "component": "/Users/macbook/Documents/GitHub/components/pages/clip-text.vue",
-    "chunkName": "pages/clip-text",
-    "_name": "_0cc5d388"
+    "chunkName": "pages/clip-text"
   },
   {
     "name": "cursor",
     "path": "/cursor",
     "component": "/Users/macbook/Documents/GitHub/components/pages/cursor.vue",
-    "chunkName": "pages/cursor",
-    "_name": "_f98ea3d8"
+    "chunkName": "pages/cursor"
   },
   {
     "name": "gooey",
     "path": "/gooey",
     "component": "/Users/macbook/Documents/GitHub/components/pages/gooey.vue",
-    "chunkName": "pages/gooey",
-    "_name": "_0ed694ad"
+    "chunkName": "pages/gooey"
   },
   {
     "name": "kftest",
     "path": "/kftest",
     "component": "/Users/macbook/Documents/GitHub/components/pages/kftest.vue",
-    "chunkName": "pages/kftest",
-    "_name": "_679c63ab"
+    "chunkName": "pages/kftest"
   },
   {
     "name": "magnetic-dom",
     "path": "/magnetic-dom",
     "component": "/Users/macbook/Documents/GitHub/components/pages/magnetic-dom.vue",
-    "chunkName": "pages/magnetic-dom",
-    "_name": "_762c2292"
+    "chunkName": "pages/magnetic-dom"
   },
   {
     "name": "npm-test",
     "path": "/npm-test",
     "component": "/Users/macbook/Documents/GitHub/components/pages/npm-test.vue",
-    "chunkName": "pages/npm-test",
-    "_name": "_fdfcbf1c"
+    "chunkName": "pages/npm-test"
   },
   {
     "name": "pixi-gallery",
     "path": "/pixi-gallery",
     "component": "/Users/macbook/Documents/GitHub/components/pages/pixi-gallery.vue",
-    "chunkName": "pages/pixi-gallery",
-    "_name": "_9f3db626"
+    "chunkName": "pages/pixi-gallery"
   },
   {
     "name": "ripplecirclesclick",
     "path": "/ripplecirclesclick",
     "component": "/Users/macbook/Documents/GitHub/components/pages/ripplecirclesclick.vue",
-    "chunkName": "pages/ripplecirclesclick",
-    "_name": "_9d4ce39a"
+    "chunkName": "pages/ripplecirclesclick"
   },
   {
     "name": "svg-filter-gallery",
     "path": "/svg-filter-gallery",
     "component": "/Users/macbook/Documents/GitHub/components/pages/svg-filter-gallery.vue",
-    "chunkName": "pages/svg-filter-gallery",
-    "_name": "_6ba50244"
+    "chunkName": "pages/svg-filter-gallery"
+  },
+  {
+    "name": "test",
+    "path": "/test",
+    "component": "/Users/macbook/Documents/GitHub/components/pages/test.vue",
+    "chunkName": "pages/test"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/macbook/Documents/GitHub/components/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_ece8baf8"
+    "chunkName": "pages/index"
   }
 ]
