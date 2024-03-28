@@ -5,6 +5,7 @@
 			:key="item.title"
 			:value="item.title"
 		/>
+		<ImageDisplacement />
 	</div>
 </template>
 
@@ -37,5 +38,9 @@ export default {
 	background-color: #101010;
 	width: 100vw;
 	height: 100vh;
+
+	.OffsetHoverText {
+		--offset-letter-delay: 0s;
+	}
 }
 </style>

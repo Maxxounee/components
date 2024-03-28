@@ -15,6 +15,11 @@ export default {
 		],
 	},
 	css: [],
+	gsap: {
+		extraPlugins: {
+			scrollTrigger: true,
+		},
+	},
 	plugins: [
 		'@/plugins/directives',
 		'@/plugins/log',
@@ -28,6 +33,7 @@ export default {
 		// '@nuxtjs/eslint-module',
 		// https://go.nuxtjs.dev/stylelint
 		// '@nuxtjs/stylelint-module',
+		'nuxt-gsap-module',
 	],
 	build: {
 		extend(config) {

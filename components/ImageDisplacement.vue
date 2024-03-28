@@ -20,8 +20,8 @@
 
 									<div
 										class="c-3d-image js-3d-image"
-										data-image="/assets/images/views/gallery/00.jpg"
-										data-depth-map="/assets/images/views/gallery/d-test.png"
+										data-image="/assets/images/00.jpeg"
+										data-depth-map="/assets/images/ddd.png"
 										data-horizontal-threshold="150"
 										data-vertical-threshold="75"
 									>
@@ -120,8 +120,8 @@ export default {
 
 				// CREATE PIXI APPLICATION
 				const app = new this.$pixi.Application({
-					width: 1080,
-					height: 500,
+					width: innerWidth,
+					height: innerHeight,
 					transparent: true,
 					resolution: window.devicePixelRatio,
 					resizeTo: this.threeDImages[i],
@@ -139,13 +139,13 @@ export default {
 				image.name = imageFile;
 				// image.width = canvasWidth;
 				// image.height = canvasHeight;
-				image.width = 1080;
-				image.height = 2000;
+				image.width = innerWidth;
+				image.height = innerHeight;
 
 				image.anchor.set(0.5);
 
-				// image.position.x = 1080 / 2;
-				// image.position.y = 2000 / 2;
+				image.position.x = innerWidth / 2;
+				image.position.y = innerHeight / 2;
 
 				app.stage.addChild(image);
 
@@ -165,8 +165,8 @@ export default {
 				depthMap.name = depthMapName;
 				// depthMap.width = canvasWidth;
 				// depthMap.height = canvasHeight;
-				depthMap.width = 1080;
-				depthMap.height = 2000;
+				depthMap.width = innerWidth;
+				depthMap.height = innerHeight;
 				depthMap.anchor.set(0.5);
 
 				// depthMap.position.y = 1080 / 2;
@@ -191,8 +191,8 @@ export default {
 			verticalThreshold,
 		) {
 			container.addEventListener('mousemove', (ev) => {
-				let yAmount = ev.clientY / window.innerHeight - 0.5;
-				let xAmount = ev.clientX / window.innerWidth - 0.5;
+				let yAmount = (0.5 - ev.clientY / window.innerHeight) / 30;
+				let xAmount = (0.5 - ev.clientX / window.innerWidth) / 30;
 
 				// this.$gsap.to(displacementFilter.scale, {
 				// 	duration: 2,

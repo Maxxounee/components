@@ -45,6 +45,7 @@
 		"eslint": "^8.24.0",
 		"eslint-plugin-nuxt": "^4.0.0",
 		"eslint-plugin-vue": "^9.5.1",
+		"nuxt-gsap-module": "^2.0.0",
 		"postcss-html": "^1.5.0",
 		"sass": "^1.69.5",
 		"sass-loader": "^10.4.1",
