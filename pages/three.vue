@@ -26,8 +26,8 @@ export default {
 			1,
 			1000,
 		);
-		camera.position.set(0, 3, 20);
-		camera.lookAt(0, 0, 0);
+		camera.position.set(0, 200, 400);
+		camera.lookAt(30, 0, 0);
 
 		const loader = new this.$GLTFLoader();
 
@@ -40,9 +40,21 @@ export default {
 		// scene.add(groundMesh);
 
 		const spotLight = new this.$t.SpotLight(0xffffff, 3, 100, 0.2, 0.5);
-		spotLight.position.set(0, 25, 0);
+		spotLight.position.set(0, 25, 50);
 		scene.add(spotLight);
+		var hemiLight = new this.$t.HemisphereLight(0xffffff, 0xffffff, 300);
+		const ambientLight = new this.$t.AmbientLight(0xffffff, 300);
 
+		ambientLight.position.set(0, 100, 50);
+		scene.add(ambientLight);
+		scene.add(hemiLight);
+
+		const light = new this.$t.DirectionalLight(0xFFFFFF, 0.3);
+		light.position.set(33, 3150, 140);
+		// scene.add(light);
+
+		const helper = new this.$t.DirectionalLightHelper(light, 20);
+		scene.add(helper);
 		// const controls = new this.$OrbitControls(camera, renderer.domElement);
 		// controls.enableDamping = true;
 		// controls.enablePan = false;
@@ -56,8 +68,26 @@ export default {
 		//
 		// scene.add(controls);
 		new Promise((resolve) => {
-			loader.load('/assets/3d/normal_girl/scene.gltf', (gltf) => {
+			// loader.load('/assets/3d/normal_girl/scene.gltf', (gltf) => {
+			// 	const woman = gltf.scene;
+			// 	woman.position.z = 17;
+			// 	scene.add(woman);
+			// 	resolve(woman);
+			// });
+			loader.load('/assets/3d/shift/shift_bld_1.gltf', (gltf) => {
 				const woman = gltf.scene;
+				gltf.scene.children.forEach((child) => {
+					child.children[0].children.forEach((mesh) => {
+						mesh.material.color = { r: 200, g: 250, b: 100 };
+					});
+				});
+				console.log(gltf);
+				// const ambientLight = new this.$t.AmbientLight(0x404040);
+				// var hemiLight = new this.$t.HemisphereLight(0xffffff, 0xffffff, 0.6);
+				// woman.add(ambientLight);
+				// woman.add(hemiLight);
+				// const material = new this.$t.MeshBasicMaterial({ color: 'red' });
+				// const mesh = new this.$t.Mesh(woman, material);
 				woman.position.z = 17;
 				scene.add(woman);
 				resolve(woman);
@@ -69,7 +99,7 @@ export default {
 				rice.position.x = -4;
 				rice.position.y = -1;
 				scene.add(rice);
-				this.gsapScroll(woman, rice);
+				this.gsapScroll(woman, rice, scene);
 			});
 		});
 
@@ -83,7 +113,7 @@ export default {
 	methods: {
 		update(value) {
 		},
-		gsapScroll(woman, rice) {
+		gsapScroll(woman, rice, scene) {
 			const tl = this.$gsap.timeline({
 				scrollTrigger: {
 					scroller: this.$el,
@@ -91,9 +121,9 @@ export default {
 					markers: true,
 				},
 			});
-			tl.to(woman.rotation, { y: 6 }, 'one');
-			tl.from(woman.position, { x: 5, z: 20 }, 'one');
-			tl.to(woman.position, { x: 2, z: 12 }, 'two');
+			tl.to(scene.rotation, { y: 10 }, 'one');
+			// tl.from(woman.position, { x: 5, z: 20 }, 'one');
+			// tl.to(woman.position, { x: 2, z: 12 }, 'two');
 
 			tl.from(this.$el.querySelector('h1'), {
 				xPercent: -100,
