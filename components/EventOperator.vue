@@ -3,7 +3,6 @@
 		class="EventOperator"
 		@wheel="wheelHandler"
 		@mousedown="mousedownHandler"
-		@mousemove="mousemoveHandler"
 	>
 	</div>
 </template>
@@ -56,6 +55,7 @@ export default {
 		'change',
 		'corner',
 		'wheel',
+		'mouseDown',
 		'mouseMoving',
 		'mouseSwipe',
 	],
@@ -75,6 +75,10 @@ export default {
 				this.current = value;
 			},
 		},
+	},
+	beforeDestroy() {
+		window.removeEventListener('mouseup', this.mouseupHandler);
+		window.removeEventListener('mousemove', this.mousemoveHandler);
 	},
 	mounted() {
 		window.addEventListener('keydown', this.keydownHandler);
@@ -113,6 +117,7 @@ export default {
 
 			if (corner) { this.$emit('corner', corner); }
 		},
+		/** keydown */
 		keydownHandler(event) {
 			if (!this.throttleProxy('keydown')) { return null; }
 
@@ -131,6 +136,7 @@ export default {
 				this.$emit('arrowPress', { direction });
 			}
 		},
+		/** wheel */
 		wheelHandler(event) {
 			if (!this.throttleProxy('wheel')) { return null; }
 
@@ -140,10 +146,20 @@ export default {
 				this.$emit('wheel', { direction });
 			}
 		},
+		/** mouseSwipe */
 		mousedownHandler(event) {
 			this.mouseEventData.startX = event.offsetX;
 			this.mouseEventData.startY = event.offsetY;
 			this.mouseEventData.mousedown = true;
+
+			const data = {
+				x: event.offsetX,
+				y: event.offsetY,
+			};
+
+			this.$emit('mouseDown', data);
+
+			window.addEventListener('mousemove', this.mousemoveHandler);
 		},
 		mousemoveHandler(event) {
 			if (!this.mouseEventData.mousedown) { return null; }
@@ -159,30 +175,29 @@ export default {
 		},
 		mouseupHandler(event) {
 			window.removeEventListener('mouseup', this.mouseupHandler);
+			window.removeEventListener('mousemove', this.mousemoveHandler);
 
 			this.mouseEventData.mousedown = false;
 
+			const deltaX = this.mouseEventData.startX - event.offsetX;
+			const deltaY = this.mouseEventData.startY - event.offsetY;
+
+			const mousemoveDistance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+
+			if (mousemoveDistance < this.mousemoveDelta) { return null; }
+
+			const horizontalDirection = (Math.abs(deltaX) > Math.abs(deltaY)) ? ((deltaX > 0) ? -1 : 1) : 0;
+			const verticalDirection = (Math.abs(deltaY) > Math.abs(deltaX)) ? ((deltaY > 0) ? -1 : 1) : 0;
+
 			const data = {
-				deltaX: this.mouseEventData.startX - event.offsetX,
-				deltaY: this.mouseEventData.startY - event.offsetY,
+				deltaX,
+				deltaY,
+				horizontalDirection,
+				verticalDirection,
 			};
 
+			this.calculateCurrent(horizontalDirection || verticalDirection);
 			this.$emit('mouseSwipe', data);
-		},
-		clickHandler(event) {
-			/* eslint-disable */
-			if (this.handleClick && !this.throttleProxy('click')) { return null; }
-
-			const { width: elWidth, height: elHeight } = this.$el.getBoundingClientRect();
-
-			const data = {
-				x: event.offsetX,
-				y: event.offsetY,
-				isRight: event.offsetX > elWidth / 2,
-				isBottom: event.offsetY > elHeight / 2,
-			};
-
-			this.$emit('click', data);
 		},
 	},
 };
@@ -191,5 +206,6 @@ export default {
 <style lang="scss">
 
 .EventOperator {
+	user-select: none;
 }
 </style>
