@@ -45,9 +45,22 @@ export default {
 	},
 	data() {
 		return {
+			/** Индекс текущего слайда */
 			current: 0,
+			/** @type {{ node: HTMLElement, offset: function }[]} */
 			children: [],
+			/** Следит за районом и обновляет данные, когда в разметке что-то пошебуршало */
 			mutationObserver: null,
+			dataAttributes: {
+				/** Дополнительные состояния слайда.
+				 * Сейчас каждая единица добавляет 100vh как состояние. Потом надо доделать.
+				 * Ставится на элементы в разметке (Элементы нулевой вложенности!!11!!1!!1!!)
+				 *
+				 * @example
+				 * <div class="slide" slider-additional-states="2">...</div>
+				 * */
+				additionalStates: 'slider-additional-states',
+			},
 		};
 	},
 	computed: {
@@ -76,12 +89,21 @@ export default {
 			this.mutationObserver = new MutationObserver((mutation) => {
 				this.getChildren();
 			});
+
 			this.mutationObserver.observe(this.$refs.content, options);
 		},
 		getChildren() {
 			this.children = this.$slots.default.reduce((acc, element) => {
-				if (element.tag) {
-					acc.push(element.elm);
+				if (element.tag && element.elm) {
+					const additionalStates = element.elm.getAttribute(this.dataAttributes.additionalStates);
+
+					acc.push({ node: element.elm });
+
+					if (additionalStates) {
+						for (let i = 0; i < additionalStates; i++) {
+							acc.push({ node: element.elm, offset: () => window.innerHeight * (i + 1) });
+						}
+					}
 				}
 				return acc;
 			}, []);
@@ -97,22 +119,23 @@ export default {
 			}
 		},
 		slideTo({ index }) {
-			console.log(index);
-			// this.$refs.SmoothieScroller.start();
+			const item = this.children[index];
+
+			if (!item) {
+				console.log('ScrollSlider.slideTo ---> [no item in children array]');
+				return;
+			}
 
 			const options = {
 				force: true,
 				duration: 1,
 				lerp: null,
 				lock: true,
+				offset: item.offset?.(),
 				easing: (e) => e < 0.5 ? 8 * Math.pow(e, 4) : 1 - Math.pow(-2 * e + 2, 4) / 2,
-				onComplete: () => {
-					// this.$refs.SmoothieScroller.stop();
-					console.log('COMPLETE');
-				},
 			};
-			console.log(this.children[index]);
-			this.$refs.SmoothieScroller.scrollTo(this.children[index], options);
+
+			this.$refs.SmoothieScroller.scrollTo(item.node, options);
 		},
 	},
 };

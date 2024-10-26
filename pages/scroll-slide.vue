@@ -1,23 +1,48 @@
 <template>
 	<ScrollSlider class="page-test">
-		<ScrollAnimation>
+		<ScrollAnimation
+			v-if="test"
+		>
 			<div class="block-100">
 				<img :src="images[0]" />
 			</div>
 		</ScrollAnimation>
-		<ScrollAnimation
-			appearance-shift="-50dvh"
-			appearance-scale="1.2"
-			appearance-clip="50dvh"
-			disappearance-shift="100dvh"
+		<!--		<ScrollAnimation-->
+		<!--			v-if="test"-->
+		<!--			appearance-shift="-50dvh"-->
+		<!--			appearance-scale="1.2"-->
+		<!--			appearance-clip="50dvh"-->
+		<!--			disappearance-shift="100dvh"-->
+		<!--			slider-additional-states="2"-->
+		<!--		>-->
+		<!--			&lt;!&ndash;			<div class="block-100">&ndash;&gt;-->
+		<!--			&lt;!&ndash;				<img :src="images[1]" />&ndash;&gt;-->
+		<!--			&lt;!&ndash;			</div>&ndash;&gt;-->
+		<!--		</ScrollAnimation>-->
+		<HorizontalScroll
+			ref="test"
+			v-slot="{ pinnedElement }"
+			:pin-height-vh="2"
+			slider-additional-states="2"
 		>
-			<div class="block-100">
-				<img :src="images[1]" />
-			</div>
-		</ScrollAnimation>
+			<ScrollAnimation
+				v-if="test"
+				:style="{ height: '100dvh', overflow: 'hidden', width: '300vw'}"
+				appearance-shift="-50dvh"
+				appearance-clip="50dvh"
+				disappearance-shift="100dvh"
+				disappearance-clip="100dvh"
+				:pinned-container="pinnedElement"
+			>
+				<!--			<div class="block-100">-->
+				<!--				<img :src="images[1]" />-->
+				<!--			</div>-->
+				<img src="/images/long.jpg" :style="{ height: '100dvh', overflow: 'hidden', width: '300vw'}" />
+			</ScrollAnimation>
+		</HorizontalScroll>
 		<ScrollAnimation
 			appearance-shift="-100dvh"
-			appearance-opacity
+			appearance-clip="100dvh"
 			disappearance-shift="100dvh"
 			disappearance-clip="100vw"
 			disappearance-clip-type="right"
@@ -27,6 +52,7 @@
 			</div>
 		</ScrollAnimation>
 		<ScrollAnimation
+			v-if="test"
 			appearance-shift="-100dvh"
 			appearance-clip="100vw"
 			appearance-clip-type="left"
@@ -88,12 +114,13 @@
 
 <script>
 import ScrollAnimation from '~/modules/ScrollAnimation/ScrollAnimation.vue';
+import HorizontalScroll from '@/modules/HorizontalScroll/HorizontalScroll.vue';
 
 export default {
-	components: { ScrollAnimation },
+	components: { HorizontalScroll, ScrollAnimation },
 	data() {
 		return {
-			test: false,
+			test: true,
 			images: [
 				'/images/00.jpg',
 				'/images/01.jpg',

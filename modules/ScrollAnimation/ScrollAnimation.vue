@@ -5,34 +5,21 @@
 		class="ScrollAnimation"
 		:calc-in="needToCalcIn"
 		:calc-out="needToCalcOut"
+		:container-animation-tween="containerAnimationTween"
+		:pinned-container="pinnedContainer"
 		@progress="saveProgress"
 	>
-		<!--		:style="styleList"-->
-		<!--		:class="classList"-->
-		<PinBlock
-			v-slot="{ progress: progressPin }"
-			:pin-height-vh="pinHeightVh"
-			:pin-spacing="pinSpacing"
-			@refresh="pinRefreshHandler"
+		<div
+			ref="wrapper"
+			class="ScrollAnimation__wrapper"
 		>
-			<div
-				ref="wrapper"
-				class="ScrollAnimation__wrapper"
-				:style="{
-					'--progress-in': progressIn,
-					'--progress-out': progressOut,
-					'--progress-pin': progressPin,
-				}"
-			>
-				<div ref="inner" class="ScrollAnimation__inner">
-					<slot
-						:progress-pin="progressPin"
-						:progress-in="progressIn"
-						:progress-out="progressOut"
-					></slot>
-				</div>
+			<div ref="inner" class="ScrollAnimation__inner">
+				<slot
+					:progress-in="progressIn"
+					:progress-out="progressOut"
+				></slot>
 			</div>
-		</PinBlock>
+		</div>
 	</ViewportProgressor>
 </template>
 
@@ -135,6 +122,13 @@ export default {
 		pinSpacing: {
 			type: Boolean,
 			default: true,
+		},
+		containerAnimationTween: {
+			type: Object,
+			default: undefined,
+		},
+		pinnedContainer: {
+			default: undefined,
 		},
 	},
 	data() {
@@ -386,175 +380,10 @@ export default {
 <style lang="scss">
 .ScrollAnimation {
 	position: relative;
+
 	&__wrapper-in,
 	&__wrapper-out {
 		will-change: translate, opacity, clip-path, transform, scale;
-	}
-
-	/* ▼-▼-▼-▼ */
-
-	/* SHIFT */
-
-	@mixin shift($shift: 100vh, $progress: 0, $type: x) {
-		$value: calc($shift * $progress);
-
-		//@if ($transform == true) {
-		//	@if ($type == x) {
-		//		transform: translate($value);
-		//	} @else if($type == y) {
-		//		transform: translate(0, $value);
-		//	}
-		//} @else {
-		//
-		//}
-		@if ($type == x) {
-			translate: $value;
-		} @else if($type == y) {
-			translate: 0 $value;
-		}
-	}
-
-	&._appearance-shift {
-		&._appearance-shift-y {
-			.ScrollAnimation__wrapper {
-				@include shift(var(--appearance-shift), calc(1 - var(--progress-in)), y);
-			}
-		}
-		&._appearance-shift-x {
-			.ScrollAnimation__wrapper {
-				@include shift(var(--appearance-shift), calc(1 - var(--progress-in)), x);
-			}
-		}
-	}
-
-	&._disappearance-shift {
-		&._disappearance-shift-y {
-			.ScrollAnimation__wrapper-inner {
-				@include shift(var(--disappearance-shift), var(--progress-out), y);
-			}
-		}
-		&._disappearance-shift-x {
-			.ScrollAnimation__wrapper-inner {
-				@include shift(var(--disappearance-shift), var(--progress-out), x);
-			}
-		}
-	}
-
-	/* ▼-▼-▼-▼ */
-
-	@mixin clip($clip: 100%, $progress: 0, $type: top) {
-		$value: calc($clip * $progress);
-
-		@if ($type == top) {
-			clip-path: inset(#{$value} 0 0 0);
-		} @else if($type == right) {
-			clip-path: inset(0 $value 0 0);
-		}@else if($type == bottom) {
-			clip-path: inset(0 0 $value 0);
-		}@else if($type == left) {
-			clip-path: inset(0 0 0 $value);
-		}
-	}
-	/* CLIP */
-	&._appearance-clip {
-		&._appearance-clip-top {
-			.ScrollAnimation__wrapper {
-				@include clip(var(--appearance-clip), calc(1 - var(--progress-in)), top);
-			}
-		}
-		&._appearance-clip-right {
-			.ScrollAnimation__wrapper {
-				@include clip(var(--appearance-clip), calc(1 - var(--progress-in)), right);
-			}
-		}
-		&._appearance-clip-bottom {
-			.ScrollAnimation__wrapper {
-				@include clip(var(--appearance-clip), calc(1 - var(--progress-in)), bottom);
-			}
-		}
-		&._appearance-clip-left {
-			.ScrollAnimation__wrapper {
-				@include clip(var(--appearance-clip), calc(1 - var(--progress-in)), left);
-			}
-		}
-	}
-
-	&._disappearance-clip {
-		&._disappearance-clip-top {
-			.ScrollAnimation__wrapper-inner {
-				@include clip(var(--disappearance-clip), var(--progress-out), top);
-			}
-		}
-		&._disappearance-clip-right {
-			.ScrollAnimation__wrapper-inner {
-				@include clip(var(--disappearance-clip), var(--progress-out), right);
-			}
-		}
-		&._disappearance-clip-bottom {
-			.ScrollAnimation__wrapper-inner {
-				@include clip(var(--disappearance-clip), var(--progress-out), bottom);
-			}
-		}
-		&._disappearance-clip-left {
-			.ScrollAnimation__wrapper-inner {
-				@include clip(var(--disappearance-clip), var(--progress-out), left);
-			}
-		}
-	}
-
-	/* ▼-▼-▼-▼ */
-
-	/* CIRCLE */
-	&._appearance-circle {
-		.ScrollAnimation__wrapper {
-			clip-path: circle(calc(100% * var(--progress-in)) at var(--appearance-circle));
-		}
-	}
-
-	&._disappearance-circle {
-		.ScrollAnimation__wrapper {
-			clip-path: circle(calc(100% * (1 - var(--progress-out))) at var(--disappearance-circle));
-		}
-	}
-
-	/* ▼-▼-▼-▼ */
-
-	/* OPACITY */
-	&._appearance-opacity {
-		.ScrollAnimation__wrapper {
-			opacity: calc((var(--appearance-opacity) + (1 - var(--appearance-opacity)) * (var(--progress-in))) );
-		}
-	}
-
-	&._disappearance-opacity {
-		.ScrollAnimation__wrapper {
-			opacity: calc(var(--disappearance-opacity) + (1 - var(--disappearance-opacity) * (1 - var(--progress-out))));
-		}
-	}
-
-	/* ▼-▼-▼-▼ */
-
-	/* SCALE */
-	&._appearance-scale,
-	&._disappearance-scale {
-		.ScrollAnimation__content {
-			--in: 0;
-			--out: 0;
-
-			scale: calc(1 + var(--in) + var(--out));
-		}
-	}
-
-	&._appearance-scale {
-		.ScrollAnimation__content {
-			--in: var(--appearance-scale) * (1 - var(--progress-in));
-		}
-	}
-
-	&._disappearance-scale {
-		.ScrollAnimation__content {
-			--out: var(--disappearance-scale) * var(--progress-out);
-		}
 	}
 }
 </style>

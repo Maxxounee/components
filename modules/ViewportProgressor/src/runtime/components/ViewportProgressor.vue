@@ -55,6 +55,9 @@ export default {
 			type: Object,
 			default: undefined,
 		},
+		pinnedContainer: {
+			default: undefined,
+		},
 	},
 	emits: [
 		'progress',
@@ -86,6 +89,7 @@ export default {
 				trigger: undefined,
 				scroller: undefined,
 				containerAnimation: undefined,
+				pinnedContainer: undefined,
 			},
 
 			defaults: {
@@ -109,9 +113,16 @@ export default {
 		};
 	},
 	watch: {
+		pinnedContainer() {
+			this.destroyScrollTriggers();
+			this.scrollTriggerOptions.pinnedContainer = this.pinnedContainer;
+			console.log('WATHCHCHHC');
+			this.init();
+		},
 		containerAnimationTween() {
 			this.destroyScrollTriggers();
 			this.scrollTriggerOptions.containerAnimation = this.containerAnimationTween;
+
 			this.init();
 		},
 	},
@@ -121,6 +132,8 @@ export default {
 		this.scrollTriggerOptions.trigger = this.$el;
 		this.scrollTriggerOptions.containerAnimation = this.containerAnimationTween;
 		this.scrollTriggerOptions.scroller = typeof this.scroller === 'function' ? this.scroller() : this.scroller;
+		this.scrollTriggerOptions.pinnedContainer = this.pinnedContainer;
+
 		this.init();
 	},
 	beforeUnmount() {

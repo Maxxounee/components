@@ -44,7 +44,7 @@ export default {
 	},
 	computed: {
 		currentNode() {
-			return this.items[this.current];
+			return this.items[this.current]?.node;
 		},
 		logData() {
 			return {
@@ -55,7 +55,7 @@ export default {
 	},
 	methods: {
 		onClick(event) {
-			console.log(`[current = ${this.current}]:\n`, this.node);
+			console.log(`[current = ${this.current}]:\n`, this.currentNode);
 		},
 		createDiv() {
 			const div = document.createElement('div');
