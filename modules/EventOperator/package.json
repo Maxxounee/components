@@ -1,0 +1,13 @@
+{
+  "name": "@art3d/EventOperator",
+  "version": "1.1.4",
+  "description": "Обработка ивентов",
+  "author": {
+    "name": "Vladimirov Maxim"
+  },
+  "publishConfig": {
+    "registry": "https://npm.art3d.ru:4873"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

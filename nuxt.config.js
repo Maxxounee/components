@@ -1,4 +1,9 @@
 export default {
+	server: {
+		port: '6969',
+		host: '0.0.0.0',
+	},
+
 	head: {
 		title: 'components',
 		htmlAttrs: {
@@ -43,12 +48,8 @@ export default {
 			});
 		},
 	},
-	module: {
-		// rules: [
-		// 	{
-		// 		test: /\.(glsl|vs|fs|vert|frag)$/,
-		// 		loader: 'webpack-glsl-loader',
-		// 	},
-		// ],
-	},
+	modules: [
+		'@/modules/SmoothieScroller',
+		'@/modules/ViewportProgressor',
+	],
 };

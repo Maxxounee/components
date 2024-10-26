@@ -1,0 +1,44 @@
+{
+	"name": "@art3d/SmoothieScroller",
+	"version": "1.2.5",
+	"description": "Плавный скролл на lenis",
+	"author": {
+		"name": "Vladimirov Maksim"
+	},
+	"main": "./src/index.js",
+	"files": [
+		"src"
+	],
+	"publishConfig": {
+		"registry": "https://npm.art3d.ru:4873"
+	},
+	"scripts": {
+		"dev": "npm run dev --prefix playground",
+		"build": "npm run build --prefix playground",
+		"start": "npm run start --prefix playground",
+		"generate": "nuxt generate",
+		"release": "changelogen --release && npm publish && git push --follow-tags",
+		"git": "git add . && git cz",
+		"git:release": "npm run git && npm run release",
+		"lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+		"lint": "npm run lint:js",
+		"lintfix": "npm run lint:js -- --fix"
+	},
+	"dependencies": {
+		"nuxt": "^2.15.8",
+		"lenis": "^1.1.9",
+		"nuxt-gsap-module": "^2.0.0"
+	},
+	"devDependencies": {
+		"changelogen": "^0.5.5",
+		"cz-customizable": "^7.0.0"
+	},
+	"config": {
+		"commitizen": {
+			"path": "node_modules/cz-customizable"
+		},
+		"cz-customizable": {
+			"config": "commitizen.cjs"
+		}
+	}
+}

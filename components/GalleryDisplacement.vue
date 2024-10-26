@@ -49,7 +49,7 @@
 
 <script>
 /* eslint-disable */
-import SlideGallery from '~/components/tools/SlideGallery.vue';
+// import SlideGallery from '~/components/tools/SlideGallery.vue';
 
 class ThreeDImagesController {
 
@@ -74,7 +74,6 @@ class ThreeDImagesController {
 }
 
 export default {
-	components: { SlideGallery },
 	props: {},
 	data() {
 		return {
@@ -232,10 +231,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/style/import";
+//@import "@/assets/style/import";
 
 .SectionGallery {
-	@include div100d(relative);
 
 	position: relative;
 

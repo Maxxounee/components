@@ -13,6 +13,9 @@
 		"lintfix": "npm run lint:js -- --fix && npm run lint:style -- --fix"
 	},
 	"dependencies": {
+		"@art3d/EventOperator": "^1.1.4",
+		"@art3d/SmoothieScroller": "^1.2.5",
+		"@art3d/ViewportProgressor": "^1.1.0",
 		"@splinetool/loader": "^0.9.507",
 		"@splinetool/runtime": "^0.9.507",
 		"babel-preset-es2015": "^6.24.1",

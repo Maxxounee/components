@@ -1,4 +1,10 @@
 {
+  "EventOperator": {
+    "description": "Auto imported from components/EventOperator.vue"
+  },
+  "GalleryDisplacement": {
+    "description": "Auto imported from components/GalleryDisplacement.vue"
+  },
   "HoverTextEffect": {
     "description": "Auto imported from components/HoverTextEffect.vue"
   },
@@ -16,6 +22,12 @@
   },
   "OffsetHoverText": {
     "description": "Auto imported from components/OffsetHoverText.vue"
+  },
+  "ReactiveLogger": {
+    "description": "Auto imported from components/ReactiveLogger.vue"
+  },
+  "ScrollSlider": {
+    "description": "Auto imported from components/ScrollSlider.vue"
   },
   "StandardButton": {
     "description": "Auto imported from components/StandardButton.vue"
